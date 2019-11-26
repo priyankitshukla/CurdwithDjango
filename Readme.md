@@ -37,3 +37,24 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/', include('employee.urls'))
 ]
+
+7- Create model - go to models.py in employee and add below class
+            # Create your models here.
+class Employee(models.Model):
+    first_name: models.CharField(max_length=20)
+    last_name: models.CharField(max_length=20)
+    project: models.CharField(max_length=20)
+    experience: models.DecimalField(max_length=9,decimal_places=2)
+
+8- run below command to prepare migration, this will create a migration file in folder migrations
+        python manage.py makemigrations
+
+9- to create actual database tables run below command
+
+        python manage.py migrate
+
+10- to view sqlite database download database browser from # Download sqllite browser https://sqlitebrowser.org/dl/ and open file db.sqlite2
+
+
+
+
