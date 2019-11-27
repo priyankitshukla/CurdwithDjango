@@ -1,4 +1,5 @@
 ```python
+
 Install django using
     pip install django==2.1.5
 To create base project setup-
@@ -13,6 +14,9 @@ python -m venv venv
 then go to /bin
 and execture activate
 
+
+Happy learning
+Thanks Priyankit :+1:
 Then
 
 pip install -r requirements.txt
@@ -255,6 +259,10 @@ https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-fo
 # I18
 http://www.marinamele.com/taskbuster-django-tutorial/internationalization-localization-languages-time-zones
 
+
+# consume rest api
+
+https://simpleisbetterthancomplex.com/tutorial/2018/02/03/how-to-use-restful-apis-with-django.html
 
 
 
