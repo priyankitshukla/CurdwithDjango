@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Add/Update Employee</h1>
+    <form method="post">
+        {% csrf_token %}<!-- mandatory for all form django take cares of CSRF -->
+        {{form}}
+        <button type="submit">Save</button>
+    </form>
+
+    {% if employee %}
+        <a href="{% url 'delete_employee' employee.id">Delete</a>
+    {% endif %}
+</body>
+</html>

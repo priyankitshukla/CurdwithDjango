@@ -90,4 +90,92 @@ admin.site.register(Employee,EmployeeAdmin)
 14-  Exercise - Introduce a new model for department.
 
 
+15- You may experience like Employee Object(1) in dropdown to get the proper name def __str__ method with model
+ def __str__(self):
+        return "%s HCL" % self.employee.first_name
+
+
+
+############################ Create custom view #######################################
+
+
+1- Go to views.py and add a function called index
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import Employee
+
+# Create your views here.
+
+
+def index(request):
+    employee_list = Employee.objects.all()
+    return render(request, 'employee.html', {'employee_list':employee_list})
+
+2- Create a folder templates inside the employee package and create a html file called employee.html and add below content
+
+<ul>
+    {%  for employee in employee_list %}
+    <li>{{ employee.first_name }}</li>
+     {% endfor %}
+</ul>
+
+
+Tips-{% %} is statndard django tempate to write the code
+     use {{ }} use double curly braces to render content dynamically
+
+3- Create Operation
+
+            1- go to urls.py and add below entry
+
+            from django.urls import path
+        from . import views
+
+
+        urlpatterns = [
+            path('', views.index, name='list_employee'),
+            path('new', views.add, name='create_employee')
+        ]
+
+# name will get use while navigating using url look employee-form.html
+
+    2- create a file called forms.py  inside the employee package and add below entry
+
+        from django import forms
+        from .models import Employee
+
+
+        class ProductForm(forms.ModelForm):
+                 class Meta:
+                    model = Employee
+                    fields = ['first_name', 'last_name', 'project', 'experience']
+
+     3- now create html file for form named employee-form.html
+
+                 <h1>Add/Update Employee</h1>
+        <form method="post">
+            {% csrf_token %}<!-- mandatory for all form django take cares of CSRF -->
+            {{form}}
+            <button type="submit">Save</button>
+        </form>
+
+        {% if employee %}
+            <a href="{% url 'delete_employee' employee.id">Delete</a>
+        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
