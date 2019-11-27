@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content%}
 <form method="post">
     {% csrf_token %}
     <h2> Are you sure you want to delete Employee {{employee.first_name}}</h2>
@@ -5,3 +7,5 @@
 
 
 </form>
+
+{% endblock %}

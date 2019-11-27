@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content%}
 <ul>
     {%  for employee in employee_list %}
     <a href="{% url 'update_employee' employee.id %}">
@@ -7,3 +9,5 @@
 </ul>
 
 <a href="{% url 'create_employee' %}"> Add a Employee</a>
+
+{% endblock %}

@@ -230,6 +230,24 @@ Tips-{% %} is statndard django tempate to write the code
 
 
 
+######################## Integrating Bootstrap
+
+Install bootstrap
+
+Step 1- create a file name base.html
+
+Step 2- go to https://getbootstrap.com/docs/4.3/getting-started/introduction/ and copy the code for base tempate
+
+Step 3- Inside body section create a django template tag with block and name it as content
+            like
+             {%  block content %}
+                {%  endblock %}
+
+Step 4- import base file in employee.html
+
+
+
+
 
 
 
