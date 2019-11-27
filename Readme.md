@@ -7,6 +7,18 @@ python manage.py startapp employee
 Add an entry in settings.py in base project for INSTLLED APP SECTION get the app name from the module apps.py.
 Now to create first endpoint
 
+######################to create a virtual env###########
+
+python -m venv venv
+then go to /bin
+and execture activate
+
+Then
+
+pip install -r requirements.txt
+
+#############################################################
+
 1- Navigate to employee package.
 2- Go to views.py
 3- add import for
