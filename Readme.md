@@ -200,6 +200,36 @@ Tips-{% %} is statndard django tempate to write the code
 
 
 
+    4- Deletion
+
+         1-           Introduce a method in views.py
+
+                        def delete(request, id):
+
+                employee = Employee.objects.get(id=id)
+
+                if request.method == 'POST':
+                    employee.delete()
+                    return redirect('list_employee')
+
+                return render(request, 'emp-delete-confirm.html', {'employee': employee})
+
+
+
+            2- add entry in urls.py
+
+                     path('delete/<int:id>/', views.delete, name='delete_employee')
+
+
+            3- add footer in employee-form.html
+
+                         {% if employee %}
+                               <a href="{% url 'delete_employee' employee.id%}">Delete</a>
+                         {% endif %}
+
+
+
+
 
 
 
