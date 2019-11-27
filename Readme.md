@@ -164,6 +164,32 @@ Tips-{% %} is statndard django tempate to write the code
         {% endif %}
 
 
+3- Update operation
+       1- add a new def for update in views.py
+
+        def update(request, id):
+    employee = Employee.objects.get(id=id)
+    form = EmployeeForm(request.POST or None, instance= employee)
+
+    if form.is_valid():
+        form.save()
+        return redirect('list_employee')
+
+    return render(request, 'employee-form.html', {'form': form, 'employee': employee})
+
+
+    2- make entry in urls.py this time add url like update/<int:id> to get id from the url
+
+    3- update the employee.html make first name surrounded with a hyperlink
+
+            <a href="{% url 'update_employee' employee.id %}">
+                      <li>{{ employee.first_name }}</li>
+               </a>
+
+
+
+
+
 
 
 
