@@ -247,6 +247,16 @@ Step 4- import base file in employee.html
 
 
 
+#Customize forms -------------------------
+
+
+https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html
+
+# I18
+http://www.marinamele.com/taskbuster-django-tutorial/internationalization-localization-languages-time-zones
+
+
+
 
 
 
