@@ -3,7 +3,10 @@
     <h1>Add/Update Employee</h1>
     <form method="post">
         {% csrf_token %}<!-- mandatory for all form django take cares of CSRF -->
+         <table border="1">
+
         {{form}}
+         </table>
         <button type="submit">Save</button>
     </form>
 
