@@ -15,8 +15,7 @@ then go to /bin
 and execture activate
 
 
-Happy learning
-Thanks Priyankit :+1:
+
 Then
 
 pip install -r requirements.txt
@@ -263,6 +262,10 @@ http://www.marinamele.com/taskbuster-django-tutorial/internationalization-locali
 # consume rest api
 
 https://simpleisbetterthancomplex.com/tutorial/2018/02/03/how-to-use-restful-apis-with-django.html
+
+
+Happy learning
+Thanks Priyankit :+1:
 
 
 
