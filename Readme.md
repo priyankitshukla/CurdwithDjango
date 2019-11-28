@@ -3,7 +3,7 @@
 Install django using
     pip install django==2.1.5
 To create base project setup-
-django-admin startproject pythonwebshop .
+django-admin startproject employeecrud .
 python manage.py startapp employee
 Add an entry in settings.py in base project for INSTLLED APP SECTION get the app name from the module apps.py.
 Now to create first endpoint
@@ -265,7 +265,7 @@ https://simpleisbetterthancomplex.com/tutorial/2018/02/03/how-to-use-restful-api
 
 
 Happy learning
-Thanks Priyankit :+1:
+Thanks Priyankit
 
 
 
