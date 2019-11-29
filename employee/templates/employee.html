@@ -3,7 +3,7 @@
 <ul>
     {%  for employee in employee_list %}
     <a href="{% url 'update_employee' employee.id %}">
-         <li>{{ employee.first_name }} works for project {{ employee.project }} </li>
+         <li>{{ employee.first_name }} works for project {{ employee.project }} at {{organization}} </li>
     </a>
      {% endfor %}
 </ul>
