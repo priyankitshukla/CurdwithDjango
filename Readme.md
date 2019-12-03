@@ -93,17 +93,15 @@ class Employee(models.Model) :
         1. Go to employee package
         2. Open file admin.py
         3. Use below snippet
-
+```
 from django.contrib import admin
 from .models import Employee
 
-# Register your models here.
-
 admin.site.register(Employee)
 
-
-13- Now to list attributes in table add below code using modelAdmin in admin.py under employee package.
-
+```
+###### Now to list attributes in table add below code using modelAdmin in admin.py under employee package.
+```
 from django.contrib import admin
 from .models import Employee
 
@@ -111,9 +109,9 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'project', 'experience')
 
 admin.site.register(Employee,EmployeeAdmin)
+```
 
-
-14-  Exercise - Introduce a new model for department.
+#Exercise - Introduce a new model for department.
 
 
 15- You may experience like Employee Object(1) in dropdown to get the proper name def __str__ method with model
