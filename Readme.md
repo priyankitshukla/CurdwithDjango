@@ -176,7 +176,7 @@ urlpatterns = [
                     fields = ['first_name', 'last_name', 'project', 'experience']
 ```
 3. now create html file for form named employee-form.html
-
+```
       <h1>Add/Update Employee</h1>
         <form method="post">
             {% csrf_token %}<!-- mandatory for all form django take cares of CSRF -->
@@ -188,10 +188,10 @@ urlpatterns = [
             <a href="{% url 'delete_employee' employee.id">Delete</a>
         {% endif %}
 
-
+```
 ## Update operation
 1. Add a new def for update in views.py
-```
+```python
         def update(request, id):
             employee = Employee.objects.get(id=id)
             form = EmployeeForm(request.POST or None, instance= employee)
@@ -214,7 +214,7 @@ urlpatterns = [
 
 ## Delete Operation
 1.           Introduce a method in views.py
-```
+```python
 def delete(request, id):
       employee = Employee.objects.get(id=id)
 
@@ -227,16 +227,16 @@ return render(request, 'emp-delete-confirm.html', {'employee': employee})
 
 
 2. add entry in urls.py
-
+```python
             path('delete/<int:id>/', views.delete, name='delete_employee')
-
+```
 
 3. add footer in employee-form.html
-
+```python
                          {% if employee %}
                                <a href="{% url 'delete_employee' employee.id%}">Delete</a>
                          {% endif %}
-
+```
 
 
 
