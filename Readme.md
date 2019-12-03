@@ -27,54 +27,44 @@
     ]
 ```
 
-Now to create first endpoint
+###### Lets create a endpoint to print Hello World
 
-######################to create a virtual env###########
-
-python -m venv venv
-then go to /bin
-and execture activate
-
-
-
-Then
-
-pip install -r requirements.txt
-
-#############################################################
-
-1- Navigate to employee package.
-2- Go to views.py
-3- add import for
-		-from django.http import HttpResponse
-4- define index method like below.
-
+-Navigate to employee package.
+-Go to views.py
+-Add import for HttpResponse
+```
+        from django.http import HttpResponse
+```
+-define index method like below.
+```
 		def index(request):
-    return HttpResponse("Hello world")
-5- Now create a file name urls.py in employee package.make entry exactly like below,
+             return HttpResponse("Hello world")
+```
+-Now create a file name urls.py in employee package.make entry exactly like below,
 
-1- add entry from django.url import path.
-2- import view using from . import views
-
-		from django.urls import path
+        1. add entry from django.url import path.
+        2. import view using
+```
+from . import views
+from django.urls import path
 from . import views
 
 
 urlpatterns=[
     path('',views.index)
 ]
-
-6- Now make a reference of urls.py of employee package in base project urls.py which is employeecrud.django
-
-       from django.contrib import admin
+```
+- Now make a reference of urls.py of employee package in base project urls.py which is employeecrud.django
+```
+from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/', include('employee.urls'))
 ]
-
-7- Create model - go to models.py in employee and add below class
+```
+###### Create model - go to models.py in employee and add below class
           from django.db import models
 
 # Create your models here.
@@ -284,6 +274,20 @@ http://www.marinamele.com/taskbuster-django-tutorial/internationalization-locali
 
 https://simpleisbetterthancomplex.com/tutorial/2018/02/03/how-to-use-restful-apis-with-django.html
 
+
+######################to create a virtual env###########
+
+python -m venv venv
+then go to /bin
+and execture activate
+
+
+
+Then
+
+pip install -r requirements.txt
+
+#############################################################
 
 Happy learning
 Thanks Priyankit
