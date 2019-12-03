@@ -83,16 +83,16 @@ class Employee(models.Model) :
 ```
                  python manage.py migrate
 ```
-To view sqlite database download database browser from # [Download sqlite browser](https://sqlitebrowser.org/dl/) and open file db.sqlite2
+###### To view sqlite database download database browser from # [Download sqlite browser](https://sqlitebrowser.org/dl/) and open file db.sqlite2
 
-11- Now to login with admin use url http://localhost:8000/admin to access the admin module we need to create a super user
-
-        command- python manage.py createsuperuser
-
-12- Now register employee Model to admin
-        1- go to employee package
-        2- open file admin.py
-        3- use below snippet
+###### Now to login with admin use url http://localhost:8000/admin to access the admin module we need to create a super user
+```
+                 python manage.py createsuperuser
+```
+###### Now register employee Model to admin
+        1. Go to employee package
+        2. Open file admin.py
+        3. Use below snippet
 
 from django.contrib import admin
 from .models import Employee
