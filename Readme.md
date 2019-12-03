@@ -15,7 +15,7 @@
         python manage.py startapp employee
 ```
 ###### Now to register employee module, add an entry in settings.py in base project for INSTALLED APP SECTION get the app name from the module apps.py.
-```
+```python
         INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -32,11 +32,11 @@
 1.Navigate to employee package.
 2.Go to views.py
 3.Add import for HttpResponse
-```
+```python
         from django.http import HttpResponse
 ```
 4.define index method like below.
-```
+```python
 		def index(request):
              return HttpResponse("Hello world")
 ```
@@ -44,7 +44,7 @@
 
         1. add entry from django.url import path.
         2. import view using
-```
+```python
 from . import views
 from django.urls import path
 from . import views
@@ -55,7 +55,7 @@ urlpatterns=[
 ]
 ```
 6. Now make a reference of urls.py of employee package in base project urls.py which is employeecrud.django
-```
+```python
 from django.contrib import admin
 from django.urls import path,include
 
@@ -67,7 +67,7 @@ urlpatterns = [
 
 # Introduce Model/Tables
 ###### Create model - go to models.py in employee and add below class
-```
+```python
 from django.db import models
 class Employee(models.Model) :
     first_name= models.CharField(max_length=20)
