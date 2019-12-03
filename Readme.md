@@ -1,7 +1,10 @@
-```python
 
-Install django using
-    pip install django==2.1.5
+# CRUD with Django and sqlite
+
+###### Install django using
+```
+        pip install django==2.1.5
+```
 To create base project setup-
 django-admin startproject employeecrud .
 python manage.py startapp employee
