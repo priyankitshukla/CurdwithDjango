@@ -111,7 +111,7 @@ class EmployeeAdmin(admin.ModelAdmin):
 admin.site.register(Employee,EmployeeAdmin)
 ```
 
-#Exercise - Introduce a new model for department.
+# Exercise - Introduce a new model for department.
 
 
 15- You may experience like Employee Object(1) in dropdown to get the proper name def __str__ method with model
