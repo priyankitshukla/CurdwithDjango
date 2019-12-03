@@ -1,0 +1,46 @@
+node 
+{ 
+  node ('slave01'){
+
+stage('Checkout code')
+  {
+       echo 'Checkout code from GitHub'
+         git 'https://github.com/priyankitshukla/CurdwithDjango.git'
+  }
+  
+  
+    stage('Installing the required plugins')
+  {
+            dir(workspace) {
+
+                    sh '''#!/bin/bash
+                        python3 -m venv venv
+                        chmod +x ./venv/bin/activate
+                        source ./venv/bin/activate
+                        pip3 install -r requirements.txt
+                    '''
+            }
+     
+  }
+
+    stage('Running the test cases of application')
+    {
+            dir(workspace) {
+                    sh 'python3 -m unittest'
+            }
+    }
+    
+    stage('Running the application')
+    {
+            dir(workspace) {
+                    sh '''
+                    python3 manage.py makemigrations
+                    python3 manage.py migrate
+                    python3 manage.py runserver
+                    '''
+            }
+    }
+ 
+      
+  }
+  }
