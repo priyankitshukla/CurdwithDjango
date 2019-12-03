@@ -111,20 +111,22 @@ class EmployeeAdmin(admin.ModelAdmin):
 admin.site.register(Employee,EmployeeAdmin)
 ```
 
-# Exercise - Introduce a new model for department.
+## Exercise - Introduce a new model for department.
 
+###### Now login t
 
-15- You may experience like Employee Object(1) in dropdown to get the proper name def __str__ method with model
- def __str__(self):
-        return "%s HCL" % self.employee.first_name
+###### You may experience like Employee Object(1) in dropdown to get the proper name def __str__ method with model
+```
+                    def __str__(self):
+                            return "%s HCL" % self.employee.first_name
+```
 
+# Create custom view
 
+## Read Operation
 
-############################ Create custom view #######################################
-
-
-1- Go to views.py and add a function called index
-
+1. Go to views.py and add a function called index
+```
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Employee
@@ -135,36 +137,35 @@ from .models import Employee
 def index(request):
     employee_list = Employee.objects.all()
     return render(request, 'employee.html', {'employee_list':employee_list})
-
-2- Create a folder templates inside the employee package and create a html file called employee.html and add below content
-
+```
+2. Create a folder templates inside the employee package and create a html file called employee.html and add below content
+```
 <ul>
     {%  for employee in employee_list %}
     <li>{{ employee.first_name }}</li>
      {% endfor %}
 </ul>
+```
+
+###### Tips-{% %} is standard django template to write the code, use {{ }} use double curly braces to render content dynamically
+
+## Create Operation
+
+1. Go to urls.py and add below entry
+```
+from django.urls import path
+from . import views
 
 
-Tips-{% %} is statndard django tempate to write the code
-     use {{ }} use double curly braces to render content dynamically
+urlpatterns = [
+       path('', views.index, name='list_employee'),
+       path('new', views.add, name='create_employee')
+      ]
+```
+###### name attribute inside the path will get use while navigating using url look employee-form.html
 
-3- Create Operation
-
-            1- go to urls.py and add below entry
-
-            from django.urls import path
-        from . import views
-
-
-        urlpatterns = [
-            path('', views.index, name='list_employee'),
-            path('new', views.add, name='create_employee')
-        ]
-
-# name will get use while navigating using url look employee-form.html
-
-    2- create a file called forms.py  inside the employee package and add below entry
-
+2. Create a file called forms.py  inside the employee package and add below entry
+```
         from django import forms
         from .models import Employee
 
@@ -173,10 +174,10 @@ Tips-{% %} is statndard django tempate to write the code
                  class Meta:
                     model = Employee
                     fields = ['first_name', 'last_name', 'project', 'experience']
+```
+3. now create html file for form named employee-form.html
 
-     3- now create html file for form named employee-form.html
-
-                 <h1>Add/Update Employee</h1>
+      <h1>Add/Update Employee</h1>
         <form method="post">
             {% csrf_token %}<!-- mandatory for all form django take cares of CSRF -->
             {{form}}
@@ -188,52 +189,49 @@ Tips-{% %} is statndard django tempate to write the code
         {% endif %}
 
 
-3- Update operation
-       1- add a new def for update in views.py
-
+## Update operation
+1. Add a new def for update in views.py
+```
         def update(request, id):
-    employee = Employee.objects.get(id=id)
-    form = EmployeeForm(request.POST or None, instance= employee)
+            employee = Employee.objects.get(id=id)
+            form = EmployeeForm(request.POST or None, instance= employee)
 
-    if form.is_valid():
-        form.save()
-        return redirect('list_employee')
+        if form.is_valid():
+            form.save()
+            return redirect('list_employee')
 
-    return render(request, 'employee-form.html', {'form': form, 'employee': employee})
+        return render(request, 'employee-form.html', {'form': form, 'employee': employee})
 
+```
+2. make entry in urls.py this time add url like update/<int:id> to get id from the url
 
-    2- make entry in urls.py this time add url like update/<int:id> to get id from the url
-
-    3- update the employee.html make first name surrounded with a hyperlink
-
+3. update the employee.html make first name surrounded with a hyperlink
+```
             <a href="{% url 'update_employee' employee.id %}">
                       <li>{{ employee.first_name }}</li>
                </a>
+```
+
+## Delete Operation
+1.           Introduce a method in views.py
+```
+def delete(request, id):
+      employee = Employee.objects.get(id=id)
+
+if request.method == 'POST':
+    employee.delete()
+    return redirect('list_employee')
+
+return render(request, 'emp-delete-confirm.html', {'employee': employee})
+```
 
 
+2. add entry in urls.py
 
-    4- Deletion
-
-         1-           Introduce a method in views.py
-
-                        def delete(request, id):
-
-                employee = Employee.objects.get(id=id)
-
-                if request.method == 'POST':
-                    employee.delete()
-                    return redirect('list_employee')
-
-                return render(request, 'emp-delete-confirm.html', {'employee': employee})
+            path('delete/<int:id>/', views.delete, name='delete_employee')
 
 
-
-            2- add entry in urls.py
-
-                     path('delete/<int:id>/', views.delete, name='delete_employee')
-
-
-            3- add footer in employee-form.html
+3. add footer in employee-form.html
 
                          {% if employee %}
                                <a href="{% url 'delete_employee' employee.id%}">Delete</a>
@@ -242,16 +240,16 @@ Tips-{% %} is statndard django tempate to write the code
 
 
 
-######################## Integrating Bootstrap
+##  Integrating Bootstrap
 
-Install bootstrap
+######Install bootstrap
 
-Step 1- create a file name base.html
+1. create a file name base.html
 
-Step 2- go to https://getbootstrap.com/docs/4.3/getting-started/introduction/ and copy the code for base tempate
+2. [Download Bootstrap Template](https://getbootstrap.com/docs/4.3/getting-started/introduction/) and copy the code for base template
 
-Step 3- Inside body section create a django template tag with block and name it as content
-            like
+3. Inside body section create a django template tag with block and name it as content like
+
              {%  block content %}
                 {%  endblock %}
 
@@ -259,36 +257,29 @@ Step 4- import base file in employee.html
 
 
 
-#Customize forms -------------------------
+# References  -------------------------
 
 
-https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html
-
-# I18
-http://www.marinamele.com/taskbuster-django-tutorial/internationalization-localization-languages-time-zones
-
-
-# consume rest api
-
-https://simpleisbetterthancomplex.com/tutorial/2018/02/03/how-to-use-restful-apis-with-django.html
+1. [Customize forms](https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html)
+2. [I18](http://www.marinamele.com/taskbuster-django-tutorial/internationalization-localization-languages-time-zones)
+3. [Consume rest api](https://simpleisbetterthancomplex.com/tutorial/2018/02/03/how-to-use-restful-apis-with-django.html)
 
 
-######################to create a virtual env###########
-
+# Create a virtual env
+```
 python -m venv venv
 then go to /bin
 and execture activate
-
+```
 
 
 Then
-
+```
 pip install -r requirements.txt
-
-#############################################################
+```
 
 Happy learning
-Thanks Priyankit
+[Priyankit](https://www.linkedin.com/in/priyankit-shukla-aa28a821/)
 
 
 
