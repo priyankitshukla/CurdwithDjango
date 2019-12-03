@@ -8,13 +8,25 @@
 
 ######  Setup base project using below command.
 ```
-django-admin startproject employeecrud .
+        django-admin startproject employeecrud .
 ```
 ######  Now create a employee module/app using below command
 ```
-python manage.py startapp employee
+        python manage.py startapp employee
 ```
-Add an entry in settings.py in base project for INSTLLED APP SECTION get the app name from the module apps.py.
+###### Now to register employee module, add an entry in settings.py in base project for INSTALLED APP SECTION get the app name from the module apps.py.
+```
+        INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'employee.apps.EmployeeConfig'
+    ]
+```
+
 Now to create first endpoint
 
 ######################to create a virtual env###########
