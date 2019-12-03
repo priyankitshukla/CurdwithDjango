@@ -3,11 +3,17 @@
 
 ###### Install django using
 ```
-        pip install django==2.1.5
+        pip install django==2.1.5 or run pip install -r reqirements.txt
 ```
-To create base project setup-
+
+######  Setup base project using below command.
+```
 django-admin startproject employeecrud .
+```
+######  Now create a employee module/app using below command
+```
 python manage.py startapp employee
+```
 Add an entry in settings.py in base project for INSTLLED APP SECTION get the app name from the module apps.py.
 Now to create first endpoint
 
