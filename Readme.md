@@ -64,26 +64,26 @@ urlpatterns = [
     path('employee/', include('employee.urls'))
 ]
 ```
+
+# Introduce Model/Tables
 ###### Create model - go to models.py in employee and add below class
-          from django.db import models
-
-# Create your models here.
-
-
+```
+from django.db import models
 class Employee(models.Model) :
     first_name= models.CharField(max_length=20)
     last_name= models.CharField(max_length=20)
     project= models.CharField(max_length=20)
     experience= models.DecimalField(max_digits=9, decimal_places=2)
-
-7. run below command to prepare migration, this will create a migration file in folder migrations
-        python manage.py makemigrations
-
-9- to create actual database tables run below command
-
+```
+##### run below command to prepare migration, this will create a migration file in folder migrations
+```
+                 python manage.py makemigrations
+```
+#####create actual database tables run below command
+```
         python manage.py migrate
-
-10- to view sqlite database download database browser from # Download sqllite browser https://sqlitebrowser.org/dl/ and open file db.sqlite2
+```
+To view sqlite database download database browser from # [Download sqlite browser] ()https://sqlitebrowser.org/dl/) and open file db.sqlite2
 
 11- Now to login with admin use url http://localhost:8000/admin to access the admin module we need to create a super user
 
