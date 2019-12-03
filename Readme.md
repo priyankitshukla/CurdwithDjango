@@ -75,15 +75,15 @@ class Employee(models.Model) :
     project= models.CharField(max_length=20)
     experience= models.DecimalField(max_digits=9, decimal_places=2)
 ```
-##### run below command to prepare migration, this will create a migration file in folder migrations
+###### run below command to prepare migration, this will create a migration file in folder migrations
 ```
                  python manage.py makemigrations
 ```
-#####create actual database tables run below command
+###### create actual database tables run below command
 ```
-        python manage.py migrate
+                 python manage.py migrate
 ```
-To view sqlite database download database browser from # [Download sqlite browser] ()https://sqlitebrowser.org/dl/) and open file db.sqlite2
+To view sqlite database download database browser from # [Download sqlite browser](https://sqlitebrowser.org/dl/) and open file db.sqlite2
 
 11- Now to login with admin use url http://localhost:8000/admin to access the admin module we need to create a super user
 
