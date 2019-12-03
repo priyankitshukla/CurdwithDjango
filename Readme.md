@@ -27,20 +27,20 @@
     ]
 ```
 
-###### Lets create a endpoint to print Hello World
+## Lets create a endpoint to print Hello World
 
--Navigate to employee package.
--Go to views.py
--Add import for HttpResponse
+1.Navigate to employee package.
+2.Go to views.py
+3.Add import for HttpResponse
 ```
         from django.http import HttpResponse
 ```
--define index method like below.
+4.define index method like below.
 ```
 		def index(request):
              return HttpResponse("Hello world")
 ```
--Now create a file name urls.py in employee package.make entry exactly like below,
+5.Now create a file name urls.py in employee package.make entry exactly like below,
 
         1. add entry from django.url import path.
         2. import view using
@@ -54,7 +54,7 @@ urlpatterns=[
     path('',views.index)
 ]
 ```
-- Now make a reference of urls.py of employee package in base project urls.py which is employeecrud.django
+6. Now make a reference of urls.py of employee package in base project urls.py which is employeecrud.django
 ```
 from django.contrib import admin
 from django.urls import path,include
@@ -76,7 +76,7 @@ class Employee(models.Model) :
     project= models.CharField(max_length=20)
     experience= models.DecimalField(max_digits=9, decimal_places=2)
 
-8- run below command to prepare migration, this will create a migration file in folder migrations
+7. run below command to prepare migration, this will create a migration file in folder migrations
         python manage.py makemigrations
 
 9- to create actual database tables run below command
