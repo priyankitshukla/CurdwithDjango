@@ -86,14 +86,14 @@ class Employee(models.Model) :
 ###### To view sqlite database download database browser from # [Download sqlite browser](https://sqlitebrowser.org/dl/) and open file db.sqlite2
 
 ###### Now to login with admin use url http://localhost:8000/admin to access the admin module we need to create a super user
-```
+```command
                  python manage.py createsuperuser
 ```
 ###### Now register employee Model to admin
         1. Go to employee package
         2. Open file admin.py
         3. Use below snippet
-```
+```python
 from django.contrib import admin
 from .models import Employee
 
@@ -101,7 +101,7 @@ admin.site.register(Employee)
 
 ```
 ###### Now to list attributes in table add below code using modelAdmin in admin.py under employee package.
-```
+```python
 from django.contrib import admin
 from .models import Employee
 
@@ -116,7 +116,7 @@ admin.site.register(Employee,EmployeeAdmin)
 ###### Now login t
 
 ###### You may experience like Employee Object(1) in dropdown to get the proper name def __str__ method with model
-```
+```python
                     def __str__(self):
                             return "%s HCL" % self.employee.first_name
 ```
@@ -126,7 +126,7 @@ admin.site.register(Employee,EmployeeAdmin)
 ## Read Operation
 
 1. Go to views.py and add a function called index
-```
+```python
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Employee
@@ -139,7 +139,7 @@ def index(request):
     return render(request, 'employee.html', {'employee_list':employee_list})
 ```
 2. Create a folder templates inside the employee package and create a html file called employee.html and add below content
-```
+```html
 <ul>
     {%  for employee in employee_list %}
     <li>{{ employee.first_name }}</li>
@@ -152,7 +152,7 @@ def index(request):
 ## Create Operation
 
 1. Go to urls.py and add below entry
-```
+```python
 from django.urls import path
 from . import views
 
@@ -165,7 +165,7 @@ urlpatterns = [
 ###### name attribute inside the path will get use while navigating using url look employee-form.html
 
 2. Create a file called forms.py  inside the employee package and add below entry
-```
+```python
         from django import forms
         from .models import Employee
 
@@ -176,7 +176,7 @@ urlpatterns = [
                     fields = ['first_name', 'last_name', 'project', 'experience']
 ```
 3. now create html file for form named employee-form.html
-```
+```html
       <h1>Add/Update Employee</h1>
         <form method="post">
             {% csrf_token %}<!-- mandatory for all form django take cares of CSRF -->
@@ -206,7 +206,7 @@ urlpatterns = [
 2. make entry in urls.py this time add url like update/<int:id> to get id from the url
 
 3. update the employee.html make first name surrounded with a hyperlink
-```
+```html
             <a href="{% url 'update_employee' employee.id %}">
                       <li>{{ employee.first_name }}</li>
                </a>
